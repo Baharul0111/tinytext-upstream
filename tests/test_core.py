@@ -1,6 +1,6 @@
 """The suite a contributor is expected to keep green."""
 
-from tinytext import slugify, truncate, word_count
+from tinytext import slugify, truncate, word_count, word_wrap
 
 
 def test_slugify_basic():
@@ -29,3 +29,11 @@ def test_word_count():
 
 def test_word_count_empty():
     assert word_count("") == 0
+
+
+def test_word_wrap_basic():
+    assert word_wrap("the quick brown fox", 10) == ["the quick", "brown fox"]
+
+
+def test_word_wrap_short_text_is_one_line():
+    assert word_wrap("hello", 10) == ["hello"]

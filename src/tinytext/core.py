@@ -40,3 +40,29 @@ def word_count(text: str) -> int:
     3
     """
     return len(text.split())
+
+
+def word_wrap(text: str, width: int) -> list[str]:
+    """Break `text` into lines of at most `width` characters.
+
+    Words are never split, so a single word longer than `width` gets a line to
+    itself. Runs of whitespace collapse to one space.
+
+    >>> word_wrap("the quick brown fox", 10)
+    ['the quick', 'brown fox']
+    """
+    if width <= 0:
+        return []
+    lines: list[str] = []
+    current = ""
+    for word in text.split():
+        if not current:
+            current = word
+        elif len(current) + len(word) > width:
+            lines.append(current)
+            current = word
+        else:
+            current = f"{current} {word}"
+    if current:
+        lines.append(current)
+    return lines

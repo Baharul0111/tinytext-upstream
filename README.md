@@ -17,11 +17,12 @@ pip install -e ".[dev]"
 ## Usage
 
 ```python
-from tinytext import slugify, truncate, word_count
+from tinytext import slugify, truncate, word_count, word_wrap
 
 slugify("Hello, World!")      # 'hello-world'
 truncate("hello world", 8)    # 'hello...'
 word_count("one two  three")  # 3
+word_wrap("the quick brown fox", 10)  # ['the quick', 'brown fox']
 ```
 
 ## Development
