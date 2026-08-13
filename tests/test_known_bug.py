@@ -10,7 +10,6 @@ import pytest
 from tinytext import truncate
 
 
-@pytest.mark.xfail(strict=True, reason="truncate() overshoots `limit`")
 def test_truncate_never_exceeds_limit():
     result = truncate("hello world", 8)
     assert len(result) <= 8

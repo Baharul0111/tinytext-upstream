@@ -30,7 +30,9 @@ def truncate(text: str, limit: int) -> str:
         return ""
     if len(text) <= limit:
         return text
-    return text[:limit] + ELLIPSIS
+    if limit < len(ELLIPSIS):
+        return text[:limit]
+    return text[:limit - len(ELLIPSIS)] + ELLIPSIS
 
 
 def word_count(text: str) -> int:

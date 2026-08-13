@@ -17,6 +17,11 @@ def test_truncate_leaves_short_text_alone():
 
 def test_truncate_appends_ellipsis():
     assert truncate("hello world", 8).endswith("...")
+    assert len(truncate("hello world", 8)) == 8
+
+
+def test_truncate_small_limit():
+    assert len(truncate("hello", 2)) <= 2
 
 
 def test_truncate_zero_limit():
