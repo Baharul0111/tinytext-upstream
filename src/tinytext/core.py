@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+import unicodedata
 
 _NON_WORD = re.compile(r"[^a-z0-9]+")
 
@@ -12,9 +13,15 @@ ELLIPSIS = "..."
 def slugify(text: str) -> str:
     """Turn arbitrary text into a lowercase, hyphen-separated slug.
 
+    Accented letters are transliterated to their ASCII base (e.g. é -> e).
+    Characters with no ASCII equivalent are dropped; the function never raises.
+
     >>> slugify("Hello, World!")
     'hello-world'
+    >>> slugify("Héllo Wörld")
+    'hello-world'
     """
+    text = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode("ascii")
     return _NON_WORD.sub("-", text.lower()).strip("-")
 
 

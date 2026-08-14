@@ -37,3 +37,12 @@ def test_word_wrap_basic():
 
 def test_word_wrap_short_text_is_one_line():
     assert word_wrap("hello", 10) == ["hello"]
+
+
+def test_slugify_unicode():
+    assert slugify("café") == "cafe"
+    assert slugify("Héllo Wörld") == "hello-world"
+
+
+def test_slugify_non_ascii_returns_empty():
+    assert slugify("日本語") == ""
