@@ -46,3 +46,7 @@ def test_slugify_unicode():
 
 def test_slugify_non_ascii_returns_empty():
     assert slugify("日本語") == ""
+
+
+def test_slugify_combining_marks_returns_empty():
+    assert slugify("́") == ""
