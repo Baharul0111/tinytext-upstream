@@ -10,6 +10,8 @@ A very small collection of text helpers, used as a practice repository.
 
 ## Install
 
+Requires Python 3.10 or newer.
+
 ```bash
 pip install -e ".[dev]"
 ```
