@@ -50,3 +50,9 @@ def test_slugify_non_ascii_returns_empty():
 
 def test_slugify_combining_marks_returns_empty():
     assert slugify("́") == ""
+
+
+def test_word_wrap_space_counts_toward_width():
+    result = word_wrap("aaaa bbbbb", 9)
+    assert result == ["aaaa", "bbbbb"]
+    assert all(len(line) <= 9 for line in result)

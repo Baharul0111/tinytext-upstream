@@ -65,7 +65,7 @@ def word_wrap(text: str, width: int) -> list[str]:
     for word in text.split():
         if not current:
             current = word
-        elif len(current) + len(word) > width:
+        elif len(current) + 1 + len(word) > width:
             lines.append(current)
             current = word
         else:
